@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 
-/* PasswordChecker.java requires no other files. */
 
 class PasswordChecker extends JPanel
         implements ActionListener {
