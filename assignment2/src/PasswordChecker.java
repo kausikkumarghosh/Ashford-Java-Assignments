@@ -71,8 +71,6 @@ class PasswordChecker extends JPanel
                         JOptionPane.ERROR_MESSAGE);
             }
 
-            //Zero out the possible password, for security.
-            Arrays.fill(input, '0');
 
             passwordField.selectAll();
             resetFocus();
@@ -111,12 +109,10 @@ class PasswordChecker extends JPanel
     }
 
     private static boolean is_Upper_Case(char ch) {
-        // ch = Character.toUpperCase(ch);
         return (ch >= 'A' && ch <= 'Z');
     }
 
     private static boolean is_Lower_Case(char ch) {
-        //ch = Character.toUpperCase(ch);
         return (ch >= 'a' && ch <= 'z');
     }
 
