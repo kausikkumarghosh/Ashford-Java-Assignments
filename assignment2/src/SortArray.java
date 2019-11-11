@@ -1,20 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
 
-//Class that extends Comparator
-class ColumnComparator implements Comparator {
-    int columnToSort;
-    ColumnComparator(int columnToSort) {
-        this.columnToSort = columnToSort;
-    }
-    //overriding compare method
-    public int compare(Object o1, Object o2) {
-        String[] row1 = (String[]) o1;
-        String[] row2 = (String[]) o2;
-        //compare the columns to sort
-        return row1[columnToSort].compareTo(row2[columnToSort]);
-    }
-}
 
 public class SortArray {
     public static void main(String args[]){
@@ -56,5 +42,20 @@ public class SortArray {
                 System.out.print("\n");
             }
         }
+    }
+}
+
+//Class that extends Comparator
+class ColumnComparator implements Comparator {
+    int columnToSort;
+    ColumnComparator(int columnToSort) {
+        this.columnToSort = columnToSort;
+    }
+    //overriding compare method
+    public int compare(Object o1, Object o2) {
+        String[] row1 = (String[]) o1;
+        String[] row2 = (String[]) o2;
+        //compare the columns to sort
+        return row1[columnToSort].compareTo(row2[columnToSort]);
     }
 }
