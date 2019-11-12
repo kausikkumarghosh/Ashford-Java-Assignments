@@ -1,10 +1,9 @@
 import java.util.Scanner;
 
-
 public class StudentGrade {
     public static void main(String[] args) {
         char student_nm;
-        String new_student;
+        String response;
         int total_students, total_As, total_Bs, total_Cs, total_Ds, total_Fs;
         Double student_score, total_score, avg_score;
         total_score = 0.00;
@@ -74,10 +73,10 @@ public class StudentGrade {
             }
             total_students = total_students + 1;
             total_score = total_score + student_score;
-            scanner.nextLine();
-            System.out.print("Another Student (yes/no): ");
-            new_student = scanner.nextLine();
-            if (new_student.equalsIgnoreCase("no")) break;
+
+            System.out.println("Continue(Y/N)");
+            response = scanner.next();
+            if (response.equalsIgnoreCase("N")) break;
 
         }while (true);
 
@@ -90,8 +89,6 @@ public class StudentGrade {
         System.out.println("Total Number of C Grades: " + total_Cs);
         System.out.println("Total Number of D Grades: " + total_Ds);
         System.out.println("Total Number of F Grades: " + total_Fs);
-
-
     }
 
 }
