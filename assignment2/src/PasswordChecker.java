@@ -56,6 +56,7 @@ class PasswordChecker extends JPanel
 
         if (OK.equals(cmd)) { //Process the password.
             char[] input = passwordField.getPassword();
+            System.out.println("Invalid password combination : " + passwordField.getPassword());
             if (isPasswordCorrect(input)) {
                 JOptionPane.showMessageDialog(controllingFrame,
                         "Success! Your password comply with company standards.");
