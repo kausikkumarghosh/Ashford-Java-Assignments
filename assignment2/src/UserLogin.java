@@ -19,7 +19,6 @@ class UserLogin extends JPanel
 
         //User ID Field.
         userID = new TextField(15);
-        //userID.setActionCommand(OK);
         userID.addActionListener(this);
 
         JLabel userLabel = new JLabel("Enter your user ID: ");
@@ -66,8 +65,10 @@ class UserLogin extends JPanel
         String cmd = e.getActionCommand();
 
         if (OK.equals(cmd)) { //Process the password.
+            String  user = userID.getText();
             char[] input = passwordField.getPassword();
-            if (isPasswordCorrect(input)) {
+            System.out.println("Invalid password combination : " + passwordField.getPassword());
+            if (isPasswordCorrect(user, input)) {
                 JOptionPane.showMessageDialog(controllingFrame,
                         "Success! Your password comply with company standards.");
             } else {
@@ -98,25 +99,13 @@ class UserLogin extends JPanel
     /**
      * Checks the passed-in array.
      */
-    private static boolean isPasswordCorrect(char[] input) {
-        boolean isCorrect = true;
-        int charUpperCount = 0;
-        int charLowerCount = 0;
-        int numCount = 0;
+    private static boolean isPasswordCorrect(String userID, char[] password) {
+        InitializeCredentials User = new InitializeCredentials();
+        System.out.println("Invalid password combination : " + password);
 
-        if (input.length < 8) {
-            return false;
-        } else {
-            for (char ch : input) {
+        boolean isCorrect = User.CheckUser(userID, password.toString());
+        return isCorrect;
 
-                if (is_Numeric(ch)) numCount++;
-                else if (is_Upper_Case(ch)) charUpperCount++;
-                else if (is_Lower_Case(ch)) charLowerCount++;
-                else return false;
-            }
-        }
-
-        return (numCount >= 2 && charUpperCount >= 2 && charLowerCount >=2);
     }
 
     private static boolean is_Upper_Case(char ch) {
