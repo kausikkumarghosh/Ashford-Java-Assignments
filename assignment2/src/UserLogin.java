@@ -47,7 +47,7 @@ class UserLogin extends JPanel
 
     protected JComponent createButtonPanel() {
         JPanel p = new JPanel(new GridLayout(0,1));
-        JButton okButton = new JButton("Check");
+        JButton okButton = new JButton("Login");
         JButton helpButton = new JButton("Help");
 
         okButton.setActionCommand(OK);
@@ -66,19 +66,16 @@ class UserLogin extends JPanel
 
         if (OK.equals(cmd)) { //Process the password.
             String  user = userID.getText();
-            char[] input = passwordField.getPassword();
-            System.out.println("Invalid password combination : " + passwordField.getPassword());
-            if (isPasswordCorrect(user, input)) {
+            String passText = new String(passwordField.getPassword());
+            //char[] passText = passwordField.getPassword();
+            System.out.println("Invalid password combination : " + passText);
+            if (isPasswordCorrect(user, passText)) {
                 JOptionPane.showMessageDialog(controllingFrame,
-                        "Success! Your password comply with company standards.");
+                        "Your are successfully logged in!");
             } else {
                 JOptionPane.showMessageDialog(controllingFrame,
-                        "Password does not meet standards. Try again.\n" +
-                                "Minimum 8 characters in length.\n" +
-                                "Contains the following items:\n" +
-                                "- 2 Uppercase Letters\n" +
-                                "- 2 Lowercase Letters\n" +
-                                "- 2 Numbers",
+                        "Invalid username/password combination\n" +
+                                "Please Try Again!",
                         "Error Message",
                         JOptionPane.ERROR_MESSAGE);
             }
@@ -88,20 +85,17 @@ class UserLogin extends JPanel
             resetFocus();
         } else { //The user has asked for help.
             JOptionPane.showMessageDialog(controllingFrame,
-                    "Minimum 8 characters in length\n" +
-                            "Contains the following items:\n" +
-                            "- 2 Uppercase Letters\n" +
-                            "- 2 Lowercase Letters\n" +
-                            "- 2 Numbers");
+                    "Invalid username/password combination\n" +
+                            "Please Try Again!");
         }
     }
 
     /**
      * Checks the passed-in array.
      */
-    private static boolean isPasswordCorrect(String userID, char[] password) {
+    private static boolean isPasswordCorrect(String userID, String password) {
         InitializeCredentials User = new InitializeCredentials();
-        System.out.println("Invalid password combination : " + password);
+        //System.out.println("Invalid password combination : " + password);
 
         boolean isCorrect = User.CheckUser(userID, password.toString());
         return isCorrect;
@@ -132,7 +126,7 @@ class UserLogin extends JPanel
      */
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("Password Checker");
+        JFrame frame = new JFrame("User Login");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
