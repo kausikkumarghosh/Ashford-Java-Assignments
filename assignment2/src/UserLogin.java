@@ -68,6 +68,7 @@ class UserLogin extends JPanel
             String  user = userID.getText();
             String passText = new String(passwordField.getPassword());
             //char[] passText = passwordField.getPassword();
+            //String passString = passText.toString();
             System.out.println("Invalid password combination : " + passText);
             if (isPasswordCorrect(user, passText)) {
                 JOptionPane.showMessageDialog(controllingFrame,
